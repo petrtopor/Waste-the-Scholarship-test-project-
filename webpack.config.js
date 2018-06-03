@@ -7,8 +7,12 @@ module.exports =
 {
 	entry:
   	{
-  		app: './src/index.js',
+  		app: './src/index.js'
   		//somecode: './src/somecode.js'
+	},
+	devServer:
+	{
+		contentBase: './dist'
 	},
 	/*module:
 	{
@@ -60,7 +64,7 @@ module.exports =
 	plugins: 
 	[
 		new CleanWebpackPlugin(['dist']),
-    	new HtmlWebpackPlugin()
+    	new HtmlWebpackPlugin({template: 'src/index.html'})
 	],
 	output:
 	{
