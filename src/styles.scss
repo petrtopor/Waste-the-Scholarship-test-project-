@@ -82,7 +82,8 @@ header
         border-style: none;
         border-width: 0;
       }
-      .ruble-sign{
+      .ruble-sign
+      {
         @import url("http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic");
         font-family: 'PT Sans', serif;
       }
@@ -93,6 +94,18 @@ header
       flex-direction: row;
       justify-content: flex-end;
       input
+      {
+        width: 24*$unit-size;
+        text-align: center;
+        font-size: $font-size-regular;
+        font-family: Roboto Slab;
+        background-color: blue;
+        color: white;
+        margin: 0 $unit-size 0 $unit-size;
+        border-style: none;
+        border-width: 0;
+      }
+      button
       {
         width: 24*$unit-size;
         text-align: center;
