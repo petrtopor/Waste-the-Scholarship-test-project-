@@ -138,6 +138,7 @@ footer
   //background-color: blue;
   justify-content: center;
   height: 64px;
+  margin: 32px 0px 0px 0px;
   .main-space
   {
     font-size: $font-size-small;
@@ -182,6 +183,163 @@ footer
       margin: 0;
       padding: 0;
       //line-height: 20/14;
+    }
+  }
+  #how-and-where
+  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    #how
+    {
+      display: flex;
+      flex-direction: column;
+      p
+      {
+        display: flex;
+      }
+      #stars
+      {
+        display: flex;
+        .star
+        {
+          width: 16px;
+          height: 16px;
+          display: flex;
+          background-size: cover;
+          &.not-marked
+          {
+            background: url(icon_star_not_marked.svg);
+          }
+          &.marked
+          {
+            background: url(icon_star_marked.svg);
+          }
+        }
+      }
+    }
+    #where
+    {
+      display: flex;
+      flex-direction: column;
+      select
+      {
+        height: 32px;
+        width: 193px;
+      }
+    }
+  }
+  section#places-list
+  {
+    display: flex;
+    flex-direction: column;
+    .place-item
+    {
+      display: flex;
+      flex-direction: column;
+      margin: 8px 8px 8px 0px;
+      &:hover
+      {
+        background-color: #f0f0f0;
+        border: 1px;
+        margin: 7px 7px 7px 0px;
+        border-style: solid;
+        border-color: blue;
+      }
+      .place-caption
+      {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px 0px 8px 0px;
+        .place-item-name
+        {
+          display: flex;
+          font-size: 18px;
+        }
+        .place-item-maintenance-elements
+        {
+          display: flex;
+          flex-direction: row;
+          .place-item-edit-element
+          {
+            display: flex;
+            background: url(icon_edit.svg);
+            background-size: cover;
+            width: 24px;
+            height: 24px;
+          }
+          .place-item-delete-element
+          {
+            display: flex;
+            background: url(icon_delete.svg);
+            background-size: cover;
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      .place-item-rating
+      {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 0px 0px 8px 0px;
+        .place-item-rating-stars
+        {
+          display: flex;
+          flex-direction: row;
+          .star
+          {
+            display: flex;
+            background: url(icon_star_marked.svg);
+            background-size: cover;
+            width: 16px;
+            height: 16px;
+          }
+        }
+        p.place-item-rating-reviews-count
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+      }
+      .place-item-average-bill
+      {
+        display: flex;
+        flex-direction: row;
+        margin: 0px 0px 8px 0px;
+        p.place-item-average-bill-caption
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+        p.place-item-average-bill-value
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+      }
+      .place-item-summary
+      {
+        display: flex;
+        margin: 0px 0px 8px 0px;
+        p.place-item-type
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+        p.place-item-address
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+      }
     }
   }
   #caption
@@ -250,6 +408,16 @@ footer
     padding: 0;
   }
 
+  .scholarshipSlider
+  {
+    display: flex;
+    background: url(slider.svg);
+    background-size: cover;
+    width: 816px;
+    height: 24px;
+    margin: 16px 0px 0px 0px;
+  }
+
   section#map
   {
     #map-placeholder
@@ -269,192 +437,3 @@ footer
     }
   }
 }
-
-/*
-body
-{
-  font: 100% $font-stack;
-  color: $primary-color;
-  display: flex;
-  flex-direction: column;
-  margin:0 auto;
-}
-p
-{
-  font-family: "Roboto Slab";
-}
-.center-content
-{
-  display: flex;
-  flex-direction: column;
-  //width: 1232px;
-}
-.left-space
-{
-  display: flex;
-}
-.right-space
-{
-  display: flex;
-}
-h2
-{
-  font-size: $font-size-big;
-  font-family: "Roboto Slab";
-}
-
-header
-{
-  height: 48px;
-  color: #fff;
-  background-color: #4296ea;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  p
-  {
-    font-size: $font-size-regular;
-    font-family: "Roboto Slab";
-  }
-  #header-placeholder
-  {
-    margin: 0px 0px 0px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    #content
-    {
-      display: flex;
-      flex-direction: row;
-      #logo
-      {
-        display: flex;
-        width: 320px;
-        p
-        {
-          display: flex;
-          //font-size: 22px;
-          font-weight: bold;
-          //text-align: center;
-
-        }
-      }
-      #total-count
-      {
-        display: flex;
-        input
-        {
-          display: flex;
-          width: 112px;
-          background-color: #0073e6;
-        }
-        p
-        {
-          display: flex;
-          font-size: $font-size-regular;
-          padding-top: 17px;
-        }
-      }
-      #add-button
-      {
-        display: flex;
-      }
-    }
-  }
-}
-img
-{
-  max-width: 100%;
-}
-main
-{
-  margin: 0px 0px 0px 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  p
-  {
-    font-size: $font-size-regular;
-  }
-  //width: 1232px;
-  .left-space
-  {
-    display: flex;
-  }
-  .right-space
-  {
-    display: flex;
-  }
-  .center-content
-  {
-    display: flex;
-    flex-direction: column;
-    //width: 1232px;
-  }
-  #back-to-list
-  {
-    display: flex;
-  }
-  .main-content
-  {
-    display: flex;
-    flex-direction: row;
-  }
-  #add-place
-  {
-    display: flex;
-  }
-  #form
-  {
-    display: flex;
-    flex-direction: column;
-    width: $form-width;
-    .input-field
-    {
-      margin-bottom: 24px;
-    }
-    .photo
-    {
-      .image-photo-placeholder
-      {
-        padding: 8px 8px 8px 8px;
-        img
-        {
-          //max-width: 100%;
-          //max-height: 100%;
-        }
-      }
-    }
-
-    input
-    {
-      width: 100%;
-      height: 32px;
-    }
-    select
-    {
-      width: 100%;
-      height: 32px;
-    }
-
-  }
-  #map
-  {
-    display: flex;
-    padding: 0px 0px 0px 2 * $cell;
-    width: $main-width - $form-width;
-  }
-}
-
-footer
-{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  #footer-logo
-  {
-    width: $main-width;
-    font-size: $font-size-small;
-  }
-}
-*/
