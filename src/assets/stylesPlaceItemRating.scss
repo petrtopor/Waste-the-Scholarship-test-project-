@@ -1,0 +1,14 @@
+.place-item-rating
+      {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 0px 0px 8px 0px;
+        
+        p.place-item-rating-reviews-count
+        {
+          display: flex;
+          font-size: 14px;
+          margin: 0px 0px 0px 8px;
+        }
+      }
