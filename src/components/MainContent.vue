@@ -33,7 +33,7 @@
                             <div id="map-placeholder">
                                 <p>Показано: 16 из 54 (очистить фильтры)</p>
                                 <div id="yandex-map-interactive">
-                                    <img src="./assets/map.svg">
+                                    <img src="./../assets/map.svg">
                                 </div>
                             </div>
                         </section>
@@ -54,10 +54,10 @@
 
 </template>
 <script>
-	import SideSpacer from './SideSpacer'
-	import ScholarshipSlider from './ScholarshipSlider'
-	import PlaceItem from './PlaceItem'
-	import PlaceItemRatingStars from './PlaceItemRatingStars'
+	import SideSpacer from './../components/SideSpacer'
+	import ScholarshipSlider from './../components/ScholarshipSlider'
+	import PlaceItem from './../components/PlaceItem'
+	import PlaceItemRatingStars from './../components/PlaceItemRatingStars'
 
 	export default {
 		name: 'mainPart',

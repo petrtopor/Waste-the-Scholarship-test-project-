@@ -14,21 +14,20 @@
 </template>
 
 <script>
-import './assets/styles.scss'
+import './../assets/styles.scss'
 
-import TestComponentParent from './TestComponentParent'
+//import TestComponentParent from './TestComponentParent'
 
-import SideSpacer from './SideSpacer'
-import CustomHeader from './CustomHeader'
-import CustomFooter from './CustomFooter'
-import MainContent from './MainContent'
+import SideSpacer from './../components/SideSpacer'
+import CustomHeader from './../components/CustomHeader'
+import CustomFooter from './../components/CustomFooter'
+import MainContent from './../components/MainContent'
 
-import places from './assets/places.txt'
+import places from './../assets/places.txt'
 
 export default {
   name: 'NewApp',
   components: {
-    TestComponentParent,
     SideSpacer,
     CustomHeader,
     CustomFooter,

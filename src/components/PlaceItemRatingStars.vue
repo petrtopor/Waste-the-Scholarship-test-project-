@@ -7,7 +7,7 @@
 
 </template>
 <script>
-	import './assets/stylesPlaceItemRatingStars.scss'
+	import './../assets/stylesPlaceItemRatingStars.scss'
 
 	export default {
 		name: 'place-item-rating-stars',

@@ -8,9 +8,9 @@
 
 </template>
 <script>
-	import './assets/stylesPlaceItemRating.scss'
+	import './../assets/stylesPlaceItemRating.scss'
 
-	import PlaceItemRatingStars from './PlaceItemRatingStars'
+	import PlaceItemRatingStars from './../components/PlaceItemRatingStars'
 
 	export default {
 		name: 'place-item-rating',
