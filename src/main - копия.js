@@ -1,19 +1,18 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import router from './router'
+import VueRouter from 'vue-router'
 //import NewApp from './App'
-import MainPage from './pages/MainPage'
-import store from './store'
-//import PlaceEdit from './pages/PlaceEdit'
+import NewApp from './pages/Homepage'
+import PlaceEdit from './pages/PlaceEdit'
 
-//import MainContent from './components/MainContent'
+import MainContent from './components/MainContent'
 // import testComponent from './testComponent'
 // import SideSpacer from './SideSpacer'
 //import router from './router'
 
 // import './assets/styles.scss'
-/*
+
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
@@ -48,10 +47,10 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
-  store,
   components: {
-	MainPage,
-	router
+	NewApp,
+	router,
+  MainContent
 	},
-  template: '<MainPage/>'
+  template: '<div id=\'app\'><router-view></router-view></div>'
 })

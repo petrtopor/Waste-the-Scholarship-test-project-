@@ -7,7 +7,7 @@
     <custom-header v-bind:scholarshipValue.sync="scholarshipValue" />
 
     <!--<main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>-->
-    <router-view></router-view>
+
 
     <custom-footer footerText="SimbirSoft. 2018"/>
 
@@ -22,17 +22,17 @@ import './../assets/styles.scss'
 import SideSpacer from './../components/SideSpacer'
 import CustomHeader from './../components/CustomHeader'
 import CustomFooter from './../components/CustomFooter'
-import MainContent from './../components/MainContent'
+import MainContentPlaceEdit from './../components/MainContentPlaceEdit'
 
 import places from './../assets/places.txt'
 
 export default {
-  name: 'NewApp',
+  name: 'PlaceEdit',
   components: {
     SideSpacer,
     CustomHeader,
     CustomFooter,
-    MainContent
+    MainContentPlaceEdit
   },
   data: function () {
     return {

@@ -7,7 +7,9 @@
     <custom-header v-bind:scholarshipValue.sync="scholarshipValue" />
 
     <!--<main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>-->
+    <!--
     <router-view></router-view>
+  -->
 
     <custom-footer footerText="SimbirSoft. 2018"/>
 
@@ -27,7 +29,16 @@ import MainContent from './../components/MainContent'
 import places from './../assets/places.txt'
 
 export default {
-  name: 'NewApp',
+  name: 'MainPage',
+  beforeCreate() {
+    //this.$store.dispatch('fetchCategiriesFromServer');
+    console.log("beforeCreate of MainPage is working");
+    this.$nextTick(function() {
+      console.log("nextTick is here now doing things");
+      this.$store.dispatch('fetchCategoriesFromServer');
+      this.$store.dispatch('fetchEntitiesFromServer');
+    })
+  },
   components: {
     SideSpacer,
     CustomHeader,
@@ -41,6 +52,14 @@ export default {
     }
   },
   computed: {
+    /*---------------------------------*/
+    categories: function() {
+      return this.$store.getters.categories;
+    },
+    entities: function() {
+      return this.$store.getters.entities;
+    },
+    /*---------------------------------*/
     scholarshipValueOut: function() {
       return this.scholarshipValue
     },

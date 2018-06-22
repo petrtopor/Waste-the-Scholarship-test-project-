@@ -6,8 +6,7 @@
     <!--<custom-header :scholarshipValueInitial="2000" />-->
     <custom-header v-bind:scholarshipValue.sync="scholarshipValue" />
 
-    <!--<main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>-->
-    <router-view></router-view>
+    <main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>
 
     <custom-footer footerText="SimbirSoft. 2018"/>
 
