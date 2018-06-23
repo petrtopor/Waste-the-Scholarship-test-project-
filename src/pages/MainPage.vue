@@ -4,12 +4,14 @@
 
 
     <!--<custom-header :scholarshipValueInitial="2000" />-->
-    <custom-header v-bind:scholarshipValue.sync="scholarshipValue" />
+    <custom-header />
 
     <!--<main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>-->
-    <!--
+    
     <router-view></router-view>
-  -->
+  
+    <input type="number" name="test" v-model="this.$store.state.starsRequired">
+    <h2>{{this.$store.state.starsRequired}}</h2>
 
     <custom-footer footerText="SimbirSoft. 2018"/>
 
@@ -26,7 +28,7 @@ import CustomHeader from './../components/CustomHeader'
 import CustomFooter from './../components/CustomFooter'
 import MainContent from './../components/MainContent'
 
-import places from './../assets/places.txt'
+//import places from './../assets/places.txt'
 
 export default {
   name: 'MainPage',

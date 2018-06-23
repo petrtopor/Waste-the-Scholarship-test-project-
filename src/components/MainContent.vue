@@ -1,7 +1,7 @@
 <template>
 	
 	<main>
-            <!--<div class="left-space"></div>-->
+
             <side-spacer side="left"/>
             <div class="main-space">
                 <div class="row spacer">
@@ -18,7 +18,7 @@
                             </div>
                             <div id="where">
                                 <p>Где:</p>
-                                <select v-model="placeTypeRequired">
+                                <select :value="placeTypeRequired" @change="placeTypeRequiredUpdateHandler">
                                     <option v-for="placesType in placesTypes">{{placesType}}</option>
                                 </select>
                             </div>
@@ -42,13 +42,13 @@
                     <div class="col-1">
                         <section id="places-list">
                             
-                        	<place-item v-for="place in places" v-if="(parseInt(place.averageCheck)>parseInt(startPercentage*scholarshipValue*0.01))&&(parseInt(place.averageCheck)<parseInt(endPercentage*scholarshipValue*0.01))&&(place.rating<=starsRequired)&&(place.category.name===placeTypeRequired)" :scholarshipValue="scholarshipValue" :place="place"/>
-
+                        	<place-item v-for="place in places" v-if="(parseInt(place.averageCheck)>parseInt(startPercentage*scholarshipValue*0.01))&&(parseInt(place.averageCheck)<parseInt(endPercentage*scholarshipValue*0.01))&&(place.rating<=starsRequired)&&(place.category.name==placeTypeRequired)" :scholarshipValue="scholarshipValue" :place="place"/>
+                                <!--&&(place.category.name==placeTypeRequired)-->
                         </section>
                     </div>
                 </div>
             </div>
-            <!--<div class="right-space"></div>-->
+            
             <side-spacer side="right"/>
         </main>
 
@@ -68,30 +68,54 @@
 			PlaceItemRatingStars
 		},
 		props: {
-			places: Array,
-			placesTypes: Array,
-			scholarshipValue: Number,
 			startPercentageInitial: Number,
 			endPercentageInitial: Number
 		},
-		data: function() {
-			return {
-				startPercentage: this.startPercentageInitial,
-				endPercentage: this.endPercentageInitial,
-      			starsRequired: 3,
-      			placeTypeRequired: this.placesTypes[0]
-			}
-		},
 		methods: {
 			startPercentageUpdateHandler: function(newStartPercentageValue) {
-				this.startPercentage = newStartPercentageValue;
+                this.$store.dispatch('setStartPercentage', newStartPercentageValue);
 			},
 			endPercentageUpdateHandler: function(newEndPercentageValue) {
-				this.endPercentage = newEndPercentageValue;
+                this.$store.dispatch('setEndPercentage', newEndPercentageValue);
 			},
-			starsCountUpdateHandler: function(newStarsCountUpdateHandler) {
-				this.starsRequired = newStarsCountUpdateHandler;
-			}
-		}
+			starsCountUpdateHandler: function(newStarsCountValue) {
+                this.$store.dispatch('setStarsRequired', newStarsCountValue);
+			},
+            placeTypeRequiredUpdateHandler: function(newPlaceTypeRequiredValue) {
+                this.$store.dispatch('setPlaceTypeRequired', newPlaceTypeRequiredValue.target.value);
+            }
+		},
+        computed: {
+            scholarshipValue: function() {
+                return this.$store.getters.scholarshipValue;
+            },
+            startPercentage: function() {
+                return this.$store.getters.startPercentage;
+            },
+            endPercentage: function() {
+                return this.$store.getters.endPercentage;
+            },
+            places: function() {
+                var placesArray = [];
+                for (var i = 0; i < this.$store.getters.entities.length; i++) {
+                        placesArray.push(this.$store.getters.entities[i]);
+                    }
+                return placesArray;
+            },
+            starsRequired: function() {
+                return this.$store.getters.starsRequired;
+            },
+            placeTypeRequired: function() {
+                return this.$store.getters.placeTypeRequired;
+            },
+            placesTypes : function() {
+                var categoriesNamesArray = [];
+                for(var i = 0; i < this.$store.getters.categories.length; i ++)
+                {
+                    categoriesNamesArray.push(this.$store.getters.categories[i].name);
+                }
+                return categoriesNamesArray;
+            }
+        }
 	}
 </script>

@@ -12,14 +12,14 @@
 
             <div class="col-1 price">
               <p>Размер стипендии:</p>
-              <input type="number" placeholder="2000" v-model="scholarshipValue" @change="onChangeHandler" />
+              <input type="number" :value="scholarshipValue" @input="onInputHandler"/>
               <p class="ruble-sign">&#8399;</p>
             </div>
 
             <div class="col-1 add-place">
               <button>Добавить место</button>
             </div>
-        </div>
+          </div>
         </div>
 
       <side-spacer side="left"/>
@@ -36,16 +36,17 @@
 	    },
 		data: function () {
 			return {
-				caption: "Прогуляй Стипендию!",
-				scholarshipValue: this.scholarshipValueInitial
+				caption: "Прогуляй Стипендию!"
 			}
 		},
-		props: {
-			scholarshipValueInitial: 2000,
-		},
 		methods: {
-			onChangeHandler: function() {
-				this.$emit('update:scholarshipValue', this.scholarshipValue)
+			onInputHandler: function(e) {
+				this.$store.dispatch('setScholarshipValue', parseInt(e.target.value));
+			}
+		},
+		computed: {
+			scholarshipValue: function() {
+				return this.$store.getters.scholarshipValue;
 			}
 		}
 	}
