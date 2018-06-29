@@ -15,12 +15,17 @@ export default new Vuex.Store({
 		startPercentage: 0,
 		endPercentage: 12,
 		starsRequired: 2,
-		placeTypeRequired: String
+		placeTypeRequired: String,
+		placesSelected: []
 	},
 	mutations: {
+		ADD_PLACE_SELECTED(state, place) {
+			state.placesSelected.push(place);
+		},
+		REMOVE_PLACE_SELECTED(state, place) {
+			state.placesSelected.splice( list.indexOf(place), 1 );
+		},
 		ADD_CATEGORIES(state, categoriesArray) {
-			//state.categories.concat(categoriesArray);
-			//state.categories.push({id: "1", name: "CafePushed:=)LOL"});
 			for(var i = 0; i < categoriesArray.length; i++)
 			{
 				if (!(categoriesArray[i]===null)&&(!(typeof categoriesArray[i]==='undefined'))) {
@@ -36,7 +41,6 @@ export default new Vuex.Store({
 					state.entities.push(entitiesArray[i]);
 				}
 			}
-			console.log("ADD_ENTITIES mutation is working");
 		},
 		SET_SCHOLARSHIP_VALUE(state, newValue) {
 			state.scholarshipValue = newValue;
@@ -51,11 +55,16 @@ export default new Vuex.Store({
 			state.starsRequired = newValue;
 		},
 		SET_PLACE_TYPE_REQUIRED(state, newValue) {
-			console.log("SET_PLACE_TYPE_REQUIRED(state, newValue), newValue is ", newValue);
 			state.placeTypeRequired = newValue;
 		}
 	},
 	actions: {
+		addPlaceSelected(context, place) {
+			context.commit('ADD_PLACE_SELECTED', place);
+		},
+		removePlaceSelected(context, place) {
+			context.commit('REMOVE_PLACE_SELECTED', place);
+		},
 		fetchEntitiesFromServer(context) {
 	      axios.post('/api/graphql', {query:
 	      	`{entities
@@ -95,7 +104,6 @@ export default new Vuex.Store({
 	    },
 	    FAKEfetchCategoriesFromServer(context) {
 	    	var tmpArr = [{id: "1", name: "Cafe"}, {id: "2", name: "Restaurant"}, {id: "3", name: "Bar"}];
-	    	console.log(tmpArr);
 	    	context.commit('ADD_CATEGORIES', tmpArr);
 	    },
 	    setScholarshipValue(context, newValue) {
@@ -111,11 +119,13 @@ export default new Vuex.Store({
 	    	context.commit('SET_STARS_REQUIRED', newValue);
 	    },
 	    setPlaceTypeRequired(context, newValue) {
-	    	console.log("context.commit('SET_PLACE_TYPE_REQUIRED', newValue); newValue is ", newValue);
 	    	context.commit('SET_PLACE_TYPE_REQUIRED', newValue);
 	    }
 	},
 	getters: {
+		placesSelected(state) {
+			return state.placesSelected;
+		},
 		categories(state) {
 			return state.categories;
 		},

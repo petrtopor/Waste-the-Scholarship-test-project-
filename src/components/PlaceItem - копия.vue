@@ -1,9 +1,9 @@
 <template>
-	<div class="place-item" @click="onClickHandler" :class="{ selected: selected }">
+	<div class="place-item">
                             
 		<div class="place-caption">
 			<div class="place-item-name">{{placeName}}</div>
-			<div class="place-item-maintenance-elements" v-show="selected">
+			<div class="place-item-maintenance-elements">
 				<div class="place-item-edit-element"></div>
 				<div class="place-item-delete-element"></div>
 			</div>
@@ -31,11 +31,6 @@
 		components: {
 			PlaceItemRating
 		},
-		data: function() {
-			return {
-				selected: false
-			}
-		},
 		props: {
 			scholarshipValue: Number,
 			place: Object
@@ -52,6 +47,16 @@
 				return this.place.review.length;
 			},
 			starsCount: function() {
+				/*
+				if (this.reviewsCount===0) {
+					return 0;
+				}
+				var totalStars = 0;
+				for (var i = 0; i < this.reviewsCount; i++) {
+					totalStars += this.place.review[i].rating;
+				}
+				return Math.round(totalStars/this.reviewsCount);
+				*/
 				return Math.round(this.place.rating);
 			},
 			placeName: function() {
@@ -65,21 +70,6 @@
 			},
 			placeAddress: function() {
 				return this.place.address;
-			}
-		},
-		methods: {
-			onClickHandler: function() {
-				//alert("place item clicked");
-				if(this.selected === true)
-				{
-					this.selected = false;
-					this.$store.dispatch('removePlaceSelected', this.place);
-				}
-				else
-				{
-					this.selected = true;
-					this.$store.dispatch('addPlaceSelected', this.place);
-				}
 			}
 		}
 	}

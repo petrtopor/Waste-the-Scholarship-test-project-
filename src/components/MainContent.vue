@@ -33,7 +33,10 @@
                             <div id="map-placeholder">
                                 <p>Показано: 16 из 54 (очистить фильтры)</p>
                                 <div id="yandex-map-interactive">
-                                    <img src="./../assets/map.svg">
+                                    <!--<img src="./../assets/map.svg">-->
+                                    <yandex-map
+                                    :coords="[54.62896654088406, 39.731893822753904]"
+                                    style="width: 816px; height: 624px;"></yandex-map>
                                 </div>
                             </div>
                         </section>
@@ -41,9 +44,9 @@
 
                     <div class="col-1">
                         <section id="places-list">
-                            
-                        	<place-item v-for="place in places" v-if="(parseInt(place.averageCheck)>parseInt(startPercentage*scholarshipValue*0.01))&&(parseInt(place.averageCheck)<parseInt(endPercentage*scholarshipValue*0.01))&&(place.rating<=starsRequired)&&(place.category.name==placeTypeRequired)" :scholarshipValue="scholarshipValue" :place="place"/>
-                                <!--&&(place.category.name==placeTypeRequired)-->
+
+                        	<place-item v-for="place in places" v-if="(parseInt(place.averageCheck)>parseInt(startPercentage*scholarshipValue*0.01))&&(parseInt(place.averageCheck)<parseInt(endPercentage*scholarshipValue*0.01))&&(place.rating>=starsRequired)&&(place.category.name==placeTypeRequired)" :scholarshipValue="scholarshipValue" :place="place"/>
+
                         </section>
                     </div>
                 </div>
@@ -58,6 +61,10 @@
 	import ScholarshipSlider from './../components/ScholarshipSlider'
 	import PlaceItem from './../components/PlaceItem'
 	import PlaceItemRatingStars from './../components/PlaceItemRatingStars'
+    
+    import yandexMap from 'vue-yandex-maps'
+    
+    
 
 	export default {
 		name: 'mainPart',
@@ -65,7 +72,8 @@
 			SideSpacer,
 			ScholarshipSlider,
 			PlaceItem,
-			PlaceItemRatingStars
+			PlaceItemRatingStars,
+            yandexMap,
 		},
 		props: {
 			startPercentageInitial: Number,

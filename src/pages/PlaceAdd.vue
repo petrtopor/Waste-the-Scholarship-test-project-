@@ -4,9 +4,10 @@
 
 
     <!--<custom-header :scholarshipValueInitial="2000" />-->
-    <custom-header />
-    
-    <router-view></router-view>
+    <custom-header v-bind:scholarshipValue.sync="scholarshipValue" />
+
+    <!--<main-content :places="placesApp" :scholarshipValue="parseInt(scholarshipValueOut)" :startPercentageInitial="0" :endPercentageInitial="12" :placesTypes="placeTypes"/>-->
+
 
     <custom-footer footerText="SimbirSoft. 2018"/>
 
@@ -21,26 +22,17 @@ import './../assets/styles.scss'
 import SideSpacer from './../components/SideSpacer'
 import CustomHeader from './../components/CustomHeader'
 import CustomFooter from './../components/CustomFooter'
-import MainContent from './../components/MainContent'
+import MainContentPlaceEdit from './../components/MainContentPlaceEdit'
 
-//import places from './../assets/places.txt'
+import places from './../assets/places.txt'
 
 export default {
-  name: 'MainPage',
-  beforeCreate() {
-    //this.$store.dispatch('fetchCategiriesFromServer');
-    console.log("beforeCreate of MainPage is working");
-    this.$nextTick(function() {
-      console.log("nextTick is here now doing things");
-      this.$store.dispatch('fetchCategoriesFromServer');
-      this.$store.dispatch('fetchEntitiesFromServer');
-    })
-  },
+  name: 'PlaceEdit',
   components: {
     SideSpacer,
     CustomHeader,
     CustomFooter,
-    MainContent
+    MainContentPlaceEdit
   },
   data: function () {
     return {
@@ -49,14 +41,6 @@ export default {
     }
   },
   computed: {
-    /*---------------------------------*/
-    categories: function() {
-      return this.$store.getters.categories;
-    },
-    entities: function() {
-      return this.$store.getters.entities;
-    },
-    /*---------------------------------*/
     scholarshipValueOut: function() {
       return this.scholarshipValue
     },

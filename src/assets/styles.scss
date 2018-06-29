@@ -233,12 +233,26 @@ footer
   {
     display: flex;
     flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+    overflow-y: auto;
     .place-item
     {
       display: flex;
       flex-direction: column;
       margin: 8px 8px 8px 0px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #E0E0E0;
       &:hover
+      {
+        background-color: #f0f0f0;
+        border: 1px;
+        margin: 7px 7px 7px 0px;
+        border-style: solid;
+        border-color: blue;
+      }
+      &.selected
       {
         background-color: #f0f0f0;
         border: 1px;
